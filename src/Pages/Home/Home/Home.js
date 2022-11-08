@@ -1,9 +1,12 @@
 import React from 'react';
+import Services from '../Services/Services';
+import Slider from '../Slider/Slider';
 
 const Home = () => {
     return (
-        <div>
-            from home
+        <div className='max-w-screen-xl mx-auto'>
+            <Slider></Slider>
+            <Services></Services>
         </div>
     );
 };
