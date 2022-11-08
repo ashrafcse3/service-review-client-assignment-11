@@ -4,7 +4,7 @@ import ReviewTexts from './ReviewTexts';
 
 const Review = () => {
     return (
-        <div>
+        <div className='mx-auto max-w-screen-xl'>
             <ReviewTexts></ReviewTexts>
             <ReviewForm></ReviewForm>
         </div>
