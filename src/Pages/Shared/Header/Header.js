@@ -4,7 +4,15 @@ import logo from '../../../assets/favicon.ico';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setUser, logOutUser } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => {
+                setUser(null);
+            })
+            .then(error => console.error('header.js error', error));
+    }
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
@@ -35,10 +43,10 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user.uid ?
+                    user ?
                         <div>
-                            Welcome {user.name}
-                            <button className='ml-2 btn'>Logout</button>
+                            Welcome {user.email}
+                            <button onClick={handleLogOut} className='ml-2 btn'>Logout</button>
                         </div>
                         :
                         <div>
