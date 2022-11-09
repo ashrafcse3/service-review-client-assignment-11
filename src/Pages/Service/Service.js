@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Service = ({ service: { _id, name, image, price, description } }) => {
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure className='h-56'><img src={image} alt="Shoes" /></figure>
+            <PhotoProvider>
+                <PhotoView src={image}>
+                    <figure className='h-56'><img src={image} alt="Shoes" /></figure>
+                </PhotoView>
+            </PhotoProvider>
             <div className="card-body">
                 <div className='flex justify-between'>
                     <span className='rounded px-4 bg-orange-100 text-orange-700'>Creative</span>
