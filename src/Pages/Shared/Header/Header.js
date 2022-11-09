@@ -34,9 +34,18 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a href="/login" className="btn">Login</a>
-                <a href="/register" className="btn ml-2">Register</a>
-                {user.name}
+                {
+                    user.uid ?
+                        <div>
+                            Welcome {user.name}
+                            <button className='ml-2 btn'>Logout</button>
+                        </div>
+                        :
+                        <div>
+                            <a href="/login" className="btn">Login</a>
+                            <a href="/register" className="btn ml-2">Register</a>
+                        </div>
+                }
             </div>
         </div>
     );

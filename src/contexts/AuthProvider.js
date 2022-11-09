@@ -3,7 +3,10 @@ import React, { createContext } from 'react';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const user = { name: 'Mobile user' };
+    const user = {
+        // uid: 's92lsl2lslsw0wlw02',
+        name: 'Mobile user'
+    };
 
     const authValues = { user };
 
