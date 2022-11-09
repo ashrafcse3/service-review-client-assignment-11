@@ -5,11 +5,12 @@ import SvDetails from './SvDetails';
 
 const ServiceDetails = () => {
     const { service, reviews } = useLoaderData();
+    console.log(service)
     return (
         <div>
             <>
                 <SvDetails serviceDetails={service}></SvDetails>
-                <Review reviews={reviews}></Review>
+                <Review reviews={reviews} serviceId={service._id}></Review>
             </>
         </div>
     );

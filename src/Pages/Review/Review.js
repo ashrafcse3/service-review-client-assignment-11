@@ -3,10 +3,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import ReviewForm from './ReviewForm';
 import ReviewTexts from './ReviewTexts';
 
-const Review = ({ reviews }) => {
+const Review = ({ reviews, serviceId }) => {
     const [updatedReviews, setUpdatedReviews] = useState(reviews);
 
-    const serviceId = reviews[0].service_id;
 
     const handleForm = event => {
         event.preventDefault();
@@ -48,7 +47,7 @@ const Review = ({ reviews }) => {
             <h1 className='text-3xl font-bold'>Reviews for this service</h1>
             <hr />
             <div className='rounded-md px-7 py-5 mt-5 bg-white text-lg'>
-                Reviewd by <span className='font-semibold'>{reviews.length} User</span>
+                Reviewd by <span className='font-semibold'>{updatedReviews.length} User</span>
             </div>
             {
                 updatedReviews.map(review => <ReviewTexts

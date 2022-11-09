@@ -7,7 +7,7 @@ const ReviewForm = ({ handleForm }) => {
 
 
     return (
-        <div className='rounded-md px-7 py-5 bg-white text-lg mb-8'>
+        <div className='rounded-md px-7 py-5 my-5 bg-white text-lg mb-8'>
             <h1 className='text-2xl font-bold'>Write a review about this service</h1>
             <form onSubmit={handleForm} className='mt-9'>
                 <textarea name="review" id="" rows='5' className="border rounded block p-2.5 w-full text-sm" placeholder='Write your review'></textarea>
