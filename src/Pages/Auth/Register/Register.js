@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -38,6 +39,9 @@ const Register = () => {
 
     return (
         <div className='mx-auto max-w-screen-lg grid grid-cols-1 lg:grid-cols-2'>
+            <Helmet>
+                <title>Register | Eye Specialist</title>
+            </Helmet>
             <form onSubmit={handleRegister} className="card-body">
                 <div className="form-control">
                     <label className="label">
