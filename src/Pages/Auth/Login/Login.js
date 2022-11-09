@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
-    const { setUser, signInUser } = useContext(AuthContext);
+    const { setUser, signInUser, signInWithGoogle } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,6 +26,16 @@ const Login = () => {
             .catch(error => console.error(error));
     }
 
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const signedUser = result.user;
+                setUser(signedUser);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error));
+    }
+
     return (
         <div className='mx-auto max-w-screen-lg grid grid-cols-1 lg:grid-cols-2'>
             <form onSubmit={handleLoginForm} className="card-body">
@@ -41,7 +51,7 @@ const Login = () => {
                     </label>
                     <input name="password" type="password" placeholder="password" className="input input-bordered" />
                     <label className="label">
-                        <a href="/register" className="label-text-alt link link-hover">Do not have an account? Sign Up</a>
+                        <Link to="/register" className="label-text-alt link link-hover">Do not have an account? Sign Up</Link>
                     </label>
                 </div>
                 <div className="form-control mt-6">
@@ -49,7 +59,7 @@ const Login = () => {
                 </div>
             </form>
             <div className='flex items-center justify-center'>
-                <button className='border px-4 py-2 flex items-center'>Login with google <FcGoogle className='ml-2' /></button>
+                <button onClick={handleGoogleSignIn} className='border px-4 py-2 flex items-center'>Login with google <FcGoogle className='ml-2' /></button>
             </div>
         </div>
     );

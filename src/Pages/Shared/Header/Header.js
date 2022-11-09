@@ -30,11 +30,11 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a href="/" className="btn btn-ghost normal-case text-xl d-flex flex-row">
+                <Link to="/" className="btn btn-ghost normal-case text-xl d-flex flex-row">
                     {/* navbar icon */}
                     <img src={logo} alt="logo header" />
                     <p className='ml-2'>Eye specialist</p>
-                </a>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -50,8 +50,8 @@ const Header = () => {
                         </div>
                         :
                         <div>
-                            <a href="/login" className="btn">Login</a>
-                            <a href="/register" className="btn ml-2">Register</a>
+                            <Link to="/login" className="btn">Login</Link>
+                            <Link to="/register" className="btn ml-2">Register</Link>
                         </div>
                 }
             </div>
