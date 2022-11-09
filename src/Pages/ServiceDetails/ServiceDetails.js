@@ -4,13 +4,12 @@ import Review from '../Review/Review';
 import SvDetails from './SvDetails';
 
 const ServiceDetails = () => {
-    const serviceDetails = useLoaderData();
-    console.log(serviceDetails);
+    const { service, reviews } = useLoaderData();
     return (
         <div>
             <>
-                <SvDetails serviceDetails={serviceDetails}></SvDetails>
-                <Review></Review>
+                <SvDetails serviceDetails={service}></SvDetails>
+                <Review reviews={reviews}></Review>
             </>
         </div>
     );
