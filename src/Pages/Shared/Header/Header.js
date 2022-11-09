@@ -5,6 +5,7 @@ import logo from '../../../assets/favicon.ico';
 const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/services'>Services</Link></li>
     </>;
 
     return (
@@ -18,7 +19,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a href="/hello" className="btn btn-ghost normal-case text-xl d-flex flex-row">
+                <a href="/" className="btn btn-ghost normal-case text-xl d-flex flex-row">
                     {/* navbar icon */}
                     <img src={logo} alt="logo header" />
                     <p className='ml-2'>Eye specialist</p>
