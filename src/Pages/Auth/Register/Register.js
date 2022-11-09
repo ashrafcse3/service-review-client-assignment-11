@@ -1,9 +1,15 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Register = () => {
     const { user, setUser, signUpUser } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleRegister = event => {
         event.preventDefault();
@@ -15,6 +21,7 @@ const Register = () => {
             .then(result => {
                 const registeredUser = result.user;
                 setUser(registeredUser);
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error));
     }

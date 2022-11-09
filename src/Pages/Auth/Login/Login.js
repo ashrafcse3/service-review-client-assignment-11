@@ -1,9 +1,15 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
     const { setUser, signInUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleLoginForm = event => {
         event.preventDefault();
@@ -15,6 +21,7 @@ const Login = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 setUser(loggedInUser);
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error));
     }
