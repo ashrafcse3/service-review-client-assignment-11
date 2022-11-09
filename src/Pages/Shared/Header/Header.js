@@ -16,7 +16,16 @@ const Header = () => {
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li>
         <li><Link to='/services'>Services</Link></li>
+        {
+            user ?
+                <>
+                    <li><Link to='/myreviews'>My reviews</Link></li>
+                    <li><Link to='/addservice'>Add a service</Link></li>
+                </>
+                : ''
+        }
     </>;
 
     return (

@@ -13,10 +13,8 @@ const Footer = () => {
                 <p>Copyright © 2022</p>
             </div>
             <div className="grid grid-flow-col gap-4">
-                <Link className="link link-hover">About us</Link>
-                <Link className="link link-hover">Contact</Link>
-                <Link className="link link-hover">Jobs</Link>
-                <Link className="link link-hover">Press kit</Link>
+                <Link to='/' className="link link-hover">Home page</Link>
+                <Link to='/services' className="link link-hover">All services</Link>
             </div>
         </footer>
     );
