@@ -19,9 +19,11 @@ const Review = ({ reviews, serviceId }) => {
             review: review,
             service_id: serviceId,
             user_id: user.uid,
-            user_name: user.displayName,
+            user_name: user.displayName === null ? 'No name' : user.displayName,
             user_profile_pic: 'https://cdn.pixabay.com/photo/2014/03/25/16/32/user-297330_1280.png'
         };
+
+        console.log(newReview);
 
         fetch('http://localhost:4000/review', {
             method: 'POST',

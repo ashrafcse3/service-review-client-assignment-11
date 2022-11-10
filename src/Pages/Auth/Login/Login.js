@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
     const { setUser, signInUser, signInWithGoogle } = useContext(AuthContext);
+
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,7 +26,10 @@ const Login = () => {
                 setUser(loggedInUser);
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                setError(error.message);
+                // console.error(error.message);
+            });
     }
 
     const handleGoogleSignIn = () => {
@@ -34,7 +39,10 @@ const Login = () => {
                 setUser(signedUser);
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                // console.error(error);
+                setError(error.message);
+            });
     }
 
     return (
@@ -47,16 +55,19 @@ const Login = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name="email" type="email" placeholder="email" className="input input-bordered" />
+                    <input name="email" type="email" placeholder="email" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name="password" type="password" placeholder="password" className="input input-bordered" />
+                    <input name="password" type="password" placeholder="password" className="input input-bordered" required />
                     <label className="label">
                         <Link to="/register" className="label-text-alt link link-hover">Do not have an account? Sign Up</Link>
                     </label>
+                </div>
+                <div>
+                    <p className='text-red-600'>{error}</p>
                 </div>
                 <div className="form-control mt-6">
                     <button type='submit' className="btn btn-primary">Login</button>

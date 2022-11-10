@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Register = () => {
     const { setUser, signUpUser, signInWithGoogle } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Register = () => {
                 setUser(registeredUser);
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error));
+            .catch(error => setError(error.message))
     }
 
     const handleGoogleSignIn = () => {
@@ -34,7 +35,7 @@ const Register = () => {
                 setUser(signedUser);
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error));
+            .catch(error => setError(error.message));
     }
 
     return (
@@ -47,16 +48,19 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name="email" type="email" placeholder="email" className="input input-bordered" />
+                    <input name="email" type="email" placeholder="email" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name="password" type="password" placeholder="password" className="input input-bordered" />
+                    <input name="password" type="password" placeholder="password" className="input input-bordered" required />
                     <label className="label">
                         <Link to="/login" className="label-text-alt link link-hover">Have an account? Login</Link>
                     </label>
+                </div>
+                <div>
+                    <p className='text-red-600'>{error}</p>
                 </div>
                 <div className="form-control mt-6">
                     <button type='submit' className="btn btn-primary">Sign up</button>
