@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import ReviewForm from './ReviewForm';
 import ReviewTexts from './ReviewTexts';
 
-const Review = ({ reviews, serviceId }) => {
+const Review = ({ reviews, service }) => {
     const [updatedReviews, setUpdatedReviews] = useState(reviews);
 
     //fetch the user details and put it on this data
@@ -17,7 +17,9 @@ const Review = ({ reviews, serviceId }) => {
 
         const newReview = {
             review: review,
-            service_id: serviceId,
+            service_id: service._id,
+            service_name: service.name,
+            service_image: service.image,
             user_id: user.uid,
             user_name: user.displayName === null ? 'No name' : user.displayName,
             user_profile_pic: 'https://cdn.pixabay.com/photo/2014/03/25/16/32/user-297330_1280.png'

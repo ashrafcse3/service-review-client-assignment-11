@@ -10,7 +10,7 @@ const ServiceDetails = () => {
         <div>
             <>
                 <SvDetails serviceDetails={service}></SvDetails>
-                <Review reviews={reviews} serviceId={service._id}></Review>
+                <Review reviews={reviews} service={service} ></Review>
             </>
         </div>
     );
