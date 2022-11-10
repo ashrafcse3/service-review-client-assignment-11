@@ -5,7 +5,7 @@ import Blog from './Blog';
 
 const Blogs = () => {
     const blogs = useLoaderData();
-    console.log(blogs)
+
     return (
         <div className='mt-16 border mx-auto max-w-screen-lg'>
             <Helmet>
